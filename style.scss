@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+//## Colors
+//### Primary
+$BrightBlue: hsl(220, 98%, 61%);
+$CheckBackground: (hsl(192, 100%, 67%), hsl(280, 87%, 65%)); //linear-gradient
+$TitleColor: hsl(0, 0, 100%);
+//### Neutral
+//### Light Theme
+.light-theme {
+    --BackgroundColor: hsl(0, 0%, 98%);
+    --Text1: hsl(236, 33%, 92%);
+    --TabColor: hsl(233, 11%, 84%);
+    --Text2: hsl(236, 9%, 61%);
+    --Text3: hsl(235, 19%, 35%);
+}
+
+//### Dark Theme
+
+
+//////////////// theme colors /////////////// 
+.dark-theme {
+    --TabColor: white;
+    --BackgroundColor: hsl(235, 21%, 11%);
+    --TabColor: hsl(235, 24%, 19%);
+    --Text1: hsl(234, 39%, 85%);
+    --Text2: hsl(234, 11%, 52%);
+    --Text3: hsl(233, 14%, 35%);
+   // --TabColor: hsl(235, 24%, 19%);
+}
+
+@mixin tabs {
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    background-color: var(--TabColor);
+    border-radius: .3em;
+    font-size: .7em;
+    color: var(--Text2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Josefin Sans";
+}
+
+body {
+    font-size: 18px;
+    color: var(--Text1);
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-image {
+    background-image: url('./images/bg-mobile-dark.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+}
+
+.site-background {
+    background-color: var(--BackgroundColor);
+    flex: 3;
+}
+
+.container {
+    position: absolute;
+    inset: 2em 1.5em 2em 1.5em;
+    display: flex;
+    flex-direction: column;
+
+    .title-themeSwitch {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        letter-spacing: 1em;
+        color: var(--Text1);
+        margin-bottom: 2em;
+    }
+
+    .items-clear {
+        @include tabs;
+        justify-content: space-between;
+        color: var(--Text2);
+    }
+
+    .switch-buttons {
+        @include tabs;
+        justify-content: space-evenly;
+        padding: 1.2em;
+        margin-top: 2em;
+    }
+}
+
+.new-item {
+    @include tabs;
+    justify-content: flex-start;
+    gap: 1em;
+    padding: 1.2em 1em;
+    border-radius: .3em .3em 0 0;
+    border-bottom: 1px solid var(--Text2);
+}
+.item-creator {
+    @include tabs;
+    justify-content: flex-start;
+    gap: 1em;
+    padding: 1.2em 1em;
+    margin-bottom: 2em;
+}
+
+
+.div-checkbox {
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--Text2);
+    border-radius: 50%;
+}
+
+.input-todo {
+    background-color: var(--TabColor);
+    color: var(--Text2);
+    font-size: 1em;
+    outline: none;
+    border: none;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// DESKTOP ///////////////////////////////////
+@media (min-width: 376px) {
+    .site-image {
+        background-image: url('./images/bg-desktop-dark.jpg');
+        background-size: cover;
+    }
+    .container {
+        inset: 10% 30%;
+    }
+}

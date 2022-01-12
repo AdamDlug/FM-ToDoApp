@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-theme">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Todo app</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="monke" class="site-image"></div>
+  <div class="site-background"></div>
+  <div class="container">
+    <div class="title-themeSwitch">
+      <h1>Todo</h1>
+      <img id="theme-switch" src="images/icon-moon.svg" alt="dark theme icon">
+    </div>
+
+
+    <div class="item-creator">
+      <div id="NewItemAccept" class="div-checkbox"></div>
+      <input id="NewItemInput" class="input-todo" type="text" placeholder="Create a new todo...">
+    </div>
+
+    <div id="Todo-list" class="todo-list"></div>
+
+    <div class="items-clear">
+      <div><span>0</span> items left</div>
+      <div id="clear-completed-button">Clear Completed</div>
+    </div>
+
+    <div class="switch-buttons">
+      <div>All</div>
+      <div id="ActiveTodoItems">Active</div>
+      <div>Completed</div>
+    </div>
+
+
+
+    <p style="text-align: center; margin-top: 2em; color: hsl(233, 14%, 35%);">Drag and drop to reorder list</p>
+  </div>
+
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/AdamDlug" target="_blank">Adam Dlug</a>.
+  </div>
+
+<script src="./script.js"></script>
+</body>
+</html>

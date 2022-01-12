@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+.light-theme {
+  --BackgroundColor: hsl(0, 0%, 98%);
+  --Text1: hsl(236, 33%, 92%);
+  --TabColor: hsl(233, 11%, 84%);
+  --Text2: hsl(236, 9%, 61%);
+  --Text3: hsl(235, 19%, 35%);
+}
+
+.dark-theme {
+  --TabColor: white;
+  --BackgroundColor: hsl(235, 21%, 11%);
+  --TabColor: hsl(235, 24%, 19%);
+  --Text1: hsl(234, 39%, 85%);
+  --Text2: hsl(234, 11%, 52%);
+  --Text3: hsl(233, 14%, 35%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans";
+}
+
+body {
+  font-size: 18px;
+  color: var(--Text1);
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.site-image {
+  background-image: url("./images/bg-mobile-dark.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.site-background {
+  background-color: var(--BackgroundColor);
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
+.container {
+  position: absolute;
+  inset: 2em 1.5em 2em 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .title-themeSwitch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 1em;
+  color: var(--Text1);
+  margin-bottom: 2em;
+}
+
+.container .items-clear {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5em;
+  background-color: var(--TabColor);
+  border-radius: .3em;
+  font-size: .7em;
+  color: var(--Text2);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: var(--Text2);
+}
+
+.container .switch-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5em;
+  background-color: var(--TabColor);
+  border-radius: .3em;
+  font-size: .7em;
+  color: var(--Text2);
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 1.2em;
+  margin-top: 2em;
+}
+
+.new-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5em;
+  background-color: var(--TabColor);
+  border-radius: .3em;
+  font-size: .7em;
+  color: var(--Text2);
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 1em;
+  padding: 1.2em 1em;
+  border-radius: .3em .3em 0 0;
+  border-bottom: 1px solid var(--Text2);
+}
+
+.item-creator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5em;
+  background-color: var(--TabColor);
+  border-radius: .3em;
+  font-size: .7em;
+  color: var(--Text2);
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 1em;
+  padding: 1.2em 1em;
+  margin-bottom: 2em;
+}
+
+.div-checkbox {
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--Text2);
+  border-radius: 50%;
+}
+
+.input-todo {
+  background-color: var(--TabColor);
+  color: var(--Text2);
+  font-size: 1em;
+  outline: none;
+  border: none;
+}
+
+@media (min-width: 376px) {
+  .site-image {
+    background-image: url("./images/bg-desktop-dark.jpg");
+    background-size: cover;
+  }
+  .container {
+    inset: 10% 30%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
