@@ -31,21 +31,24 @@
       <img id="theme-switch" src="images/icon-moon.svg" alt="dark theme icon">
     </div>
 
-
+    <!-- kreator elementow listy -->
     <div class="item-creator">
       <div id="NewItemAccept" class="div-checkbox"></div>
-      <input id="NewItemInput" class="input-todo" type="text" placeholder="Create a new todo...">
+      <input id="NewItemInput" class="input-todo" type="text" placeholder="Create a new todo... (max 40 signs)" maxlength="40">
     </div>
 
+    <!-- lista -->
     <div id="Todo-list" class="todo-list"></div>
 
+    <!-- pasek items left i clear completed -->
     <div class="items-clear">
-      <div><span>0</span> items left</div>
+      <div><span id="itemsLeft-span">0</span> items left</div>
       <div id="clear-completed-button">Clear Completed</div>
     </div>
 
+    <!-- pasek z aktywnymi elementami -->
     <div class="switch-buttons">
-      <div>All</div>
+      <div id="All-button">All</div>
       <div id="ActiveTodoItems">Active</div>
       <div>Completed</div>
     </div>

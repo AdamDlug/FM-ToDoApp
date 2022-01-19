@@ -98,11 +98,16 @@ body {
 
 .new-item {
     @include tabs;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 1em;
     padding: 1.2em 1em;
     border-radius: .3em .3em 0 0;
     border-bottom: 1px solid var(--Text2);
+}
+.new-item-content {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 .item-creator {
     @include tabs;
@@ -126,6 +131,8 @@ body {
     font-size: 1em;
     outline: none;
     border: none;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 

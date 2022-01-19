@@ -29,6 +29,7 @@ newItemAccept.addEventListener('click', function(){
     newItemText.value="";
     licznikElementow();
     ItemDelete(); 
+    console.log(document.getElementsByClassName('new-item'))
 })
 
 
@@ -37,7 +38,7 @@ newItemAccept.addEventListener('click', function(){
     trzeba poprawić usuwanie bo przy zmiennej kolejności usuwania wywala błąd
 */
 const ItemDelete = () => {
-    const testusuwanie = document.getElementsByClassName('new-item')
+    let testusuwanie = document.getElementsByClassName('new-item')
     const przyciskUsunEl = document.getElementsByClassName('DeleteElement')
     for (let i = 0; i < przyciskUsunEl.length; i++) {
         przyciskUsunEl[i].addEventListener('click', function () {
@@ -49,6 +50,8 @@ const ItemDelete = () => {
         })  
     }
 }
+
+
 
 ///////////// drag drop //////////////////
 /*
