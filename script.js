@@ -7,7 +7,7 @@ const newItemText = document.getElementById('NewItemInput')
 
 
 ///////////// zlicza elementy które istnieją w liscie
-const licznikElementow = () => {
+const ItemCounter = () => {
     document.getElementById('itemsLeft-span').innerHTML = document.querySelectorAll('.new-item').length;
 }
 
@@ -20,76 +20,81 @@ newItemAccept.addEventListener('click', function(){
     document.getElementById('Todo-list').innerHTML += 
     `<div class="new-item">
         <div class="new-item-content">
-            <div class="div-checkbox"></div>
+            <div class="div-checkbox CheckIf"></div>
             <div>${newItemText.value}</div>
         </div>
         <div><img src="./images/icon-cross.svg" class="DeleteElement"></div> 
     </div>
     `
     newItemText.value="";
-    licznikElementow();
+    ItemCounter();
     ItemDelete(); 
+    taskDone();
     console.log(document.getElementsByClassName('new-item'))
 })
+
+
 
 
 ///////////// przycisk usun element //////////////////
 /*
     trzeba poprawić usuwanie bo przy zmiennej kolejności usuwania wywala błąd
 */
+// const ItemDelete = () => {
+//     let testusuwanie = document.getElementsByClassName('new-item')
+//     const przyciskUsunEl = document.getElementsByClassName('DeleteElement')
+//     for (let i = 0; i < przyciskUsunEl.length; i++) {
+//         przyciskUsunEl[i].addEventListener('click', function () {
+//             testusuwanie[i].remove()
+//             // testusuwanie[i].parentNode.removeChild(testusuwanie[i])
+//             // i--
+//             console.log(document.querySelectorAll('.new-item'))
+//             ItemCounter();
+//         })  
+//     }
+// }
+
+
 const ItemDelete = () => {
     let testusuwanie = document.getElementsByClassName('new-item')
     const przyciskUsunEl = document.getElementsByClassName('DeleteElement')
-    for (let i = 0; i < przyciskUsunEl.length; i++) {
+    for (let i = 0; i < testusuwanie.length; i++) {
         przyciskUsunEl[i].addEventListener('click', function () {
-            
-            testusuwanie[i].parentNode.removeChild(testusuwanie[i])
-            i--
-            console.log(document.querySelectorAll('.new-item'))
-            licznikElementow();
+            testusuwanie[i].remove()            
+            ItemCounter()
+            // console.log(document.getElementById('Todo-list').innerHTML)
         })  
     }
 }
-
 
 
 ///////////// drag drop //////////////////
 /*
     
 */
-const DragDrop = () => {
-    const testDragDrop = document.getElementsByClassName('new-item')
-    for (let i = 0; i < testDragDrop.length; i++) {
-        testDragDrop[i].addEventListener('', function () {
+// const DragDrop = () => {
+//     const testDragDrop = document.getElementsByClassName('new-item')
+//     for (let i = 0; i < testDragDrop.length; i++) {
+//         testDragDrop[i].addEventListener('', function () {
             
-            testusuwanie[i].parentNode.removeChild(testusuwanie[i])
-            i--
-            console.log(document.querySelectorAll('.new-item'))
-            licznikElementow();
-        })  
-    }
-}
+//             testusuwanie[i].parentNode.removeChild(testusuwanie[i])
+//             i--
+//             console.log(document.querySelectorAll('.new-item'))
+//             ItemCounter();
+//         })  
+//     }
+// }
 
 ///////////// przycisk potwierdzajacy wykonanie zadania //////////////////
 
 const taskDone = () => {
-    for (let i = 0; i < testMouseOver.length; i++) {
-        testMouseOver[i].addEventListener('click', function () {
-            
-            testusuwanie[i].parentNode.removeChild(testusuwanie[i])
-            console.log(i)
-            console.log(document.querySelectorAll('.new-item'))
-            licznikElementow();
+    const taskDoneButton = document.getElementsByClassName('div-checkbox')
+    for (let i = 1; i < taskDoneButton.length; i++) {
+        taskDoneButton[i].addEventListener('click', function () {
+            taskDoneButton[i].classList.toggle("div-checkbox-done")
         })  
     }
 }
-
-
-
-
-
-
-
 
 
 //////////// zmiana motywu ////////////
@@ -115,7 +120,68 @@ for (let i = -1; i < todoList.length; i++) {
     })
 }
 
-///////////////  zmiana na ukończone /////////////// 
+///////////////  all active completed /////////////// 
+const AllButton = document.getElementById('All-button');
+const ActiveToDoButton = document.getElementById('ActiveTodoItems');
+const CompletedButton = document.getElementById('CompletedButton');
+
+
+AllButton.addEventListener('click', function() {
+    let testusuwanie = document.getElementsByClassName('new-item')
+    AllButton.classList.add('isActive')
+    ActiveToDoButton.classList.remove('isActive')
+    CompletedButton.classList.remove('isActive')
+    for (let i = 0; i < testusuwanie.length; i++) {
+        document.getElementsByClassName('new-item')[i].classList.remove('visibility')
+    }
+})
+ActiveToDoButton.addEventListener('click', function() {
+    let testusuwanie = document.getElementsByClassName('new-item')
+    const CheckIf = document.getElementsByClassName('CheckIf')
+    AllButton.classList.remove('isActive')
+    ActiveToDoButton.classList.add('isActive')
+    CompletedButton.classList.remove('isActive')
+    for (let i = 0; i < testusuwanie.length; i++) {
+        console.log(testusuwanie.length)
+        if (CheckIf[i].classList.contains('div-checkbox-done') != true) {
+            document.getElementsByClassName('new-item')[i].classList.remove('visibility')
+        } else {
+            document.getElementsByClassName('new-item')[i].classList.add('visibility')
+        } 
+    }
+})
+CompletedButton.addEventListener('click', function() {
+    let testusuwanie = document.getElementsByClassName('new-item')
+    const CheckIf = document.getElementsByClassName('CheckIf')
+    AllButton.classList.remove('isActive')
+    ActiveToDoButton.classList.remove('isActive')
+    CompletedButton.classList.add('isActive')
+    for (let i = 0; i < testusuwanie.length; i++) {
+        console.log(testusuwanie.length)
+        if (CheckIf[i].classList.contains('div-checkbox-done') === true) {
+            document.getElementsByClassName('new-item')[i].classList.remove('visibility')
+        } else {
+            document.getElementsByClassName('new-item')[i].classList.add('visibility')
+        } 
+    }
+})
+
+
+// ///////////// Clear completed //////////////////
+const ClearCompletedBtt = document.getElementById('clear-completed-button')
+
+ClearCompletedBtt.addEventListener('click', function() {
+    let testusuwanie = document.getElementsByClassName('new-item')
+    const CheckIf = document.getElementsByClassName('CheckIf')
+    for (let i = 0; i < testusuwanie.length; i++) {
+        console.log(testusuwanie.length)
+        if (CheckIf[i].classList.contains('div-checkbox-done') === true) {
+            document.getElementsByClassName('new-item')[i].remove()
+            ItemCounter()
+        }
+    }
+})
+
 
 
 

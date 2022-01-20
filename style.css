@@ -5,6 +5,7 @@
   --TabColor: hsl(233, 11%, 84%);
   --Text2: hsl(236, 9%, 61%);
   --Text3: hsl(235, 19%, 35%);
+  --CheckBackground: linear-gradient(hsl(192, 100%, 67%), 30%, hsl(280, 87%, 65%), 70%);
 }
 
 .dark-theme {
@@ -14,6 +15,7 @@
   --Text1: hsl(234, 39%, 85%);
   --Text2: hsl(234, 11%, 52%);
   --Text3: hsl(233, 14%, 35%);
+  --CheckBackground: linear-gradient(hsl(192, 100%, 67%), 30%, hsl(280, 87%, 65%), 70%);
 }
 
 * {
@@ -174,6 +176,14 @@ body {
   width: 20px;
   border: 2px solid var(--Text2);
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.div-checkbox-done {
+  background-image: linear-gradient(100deg, #57ddff, #c058f3), url("images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: color-burn;
 }
 
 .input-todo {
@@ -184,6 +194,30 @@ body {
   border: none;
   min-width: 200px;
   max-width: 300px;
+}
+
+.visibility {
+  display: none;
+}
+
+.isActive {
+  color: white;
+}
+
+#All-button {
+  cursor: pointer;
+}
+
+#ActiveTodoItems {
+  cursor: pointer;
+}
+
+#CompletedButton {
+  cursor: pointer;
+}
+
+#clear-completed-button {
+  cursor: pointer;
 }
 
 @media (min-width: 376px) {
