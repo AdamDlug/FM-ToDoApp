@@ -220,6 +220,10 @@ body {
   cursor: pointer;
 }
 
+.DeleteElement {
+  cursor: pointer;
+}
+
 @media (min-width: 376px) {
   .site-image {
     background-image: url("./images/bg-desktop-dark.jpg");

@@ -4,7 +4,7 @@ const przyciskActive = document.getElementById('ActiveTodoItems')
 const themeSwitch = document.getElementById('theme-switch')
 
 const newItemText = document.getElementById('NewItemInput')
-
+let ElementsDoneToDelete = new Array();
 
 ///////////// zlicza elementy które istnieją w liscie
 const ItemCounter = () => {
@@ -16,9 +16,8 @@ const ItemCounter = () => {
 ///////////// dodanie nowego elementu //////////////////
 
 newItemAccept.addEventListener('click', function(){
-
     document.getElementById('Todo-list').innerHTML += 
-    `<div class="new-item">
+    `<div id="" class="new-item">
         <div class="new-item-content">
             <div class="div-checkbox CheckIf"></div>
             <div>${newItemText.value}</div>
@@ -28,41 +27,36 @@ newItemAccept.addEventListener('click', function(){
     `
     newItemText.value="";
     ItemCounter();
+    AddIdToNewItems();
     ItemDelete(); 
     taskDone();
-    console.log(document.getElementsByClassName('new-item'))
 })
 
-
+const AddIdToNewItems = () => {
+    for ( i = 0; i < document.getElementsByClassName('new-item').length; i++) {
+        document.getElementsByClassName('new-item')[i].setAttribute('id', `${i}`)
+    }
+}
+const DeleteIdFromNewItems = () => {
+    for ( i = 0; i < document.getElementsByClassName('new-item').length; i++) {
+        document.getElementsByClassName('new-item')[i].setAttribute('id', "")
+    }
+}
 
 
 ///////////// przycisk usun element //////////////////
 /*
-    trzeba poprawić usuwanie bo przy zmiennej kolejności usuwania wywala błąd
+   
 */
-// const ItemDelete = () => {
-//     let testusuwanie = document.getElementsByClassName('new-item')
-//     const przyciskUsunEl = document.getElementsByClassName('DeleteElement')
-//     for (let i = 0; i < przyciskUsunEl.length; i++) {
-//         przyciskUsunEl[i].addEventListener('click', function () {
-//             testusuwanie[i].remove()
-//             // testusuwanie[i].parentNode.removeChild(testusuwanie[i])
-//             // i--
-//             console.log(document.querySelectorAll('.new-item'))
-//             ItemCounter();
-//         })  
-//     }
-// }
 
 
 const ItemDelete = () => {
-    let testusuwanie = document.getElementsByClassName('new-item')
-    const przyciskUsunEl = document.getElementsByClassName('DeleteElement')
-    for (let i = 0; i < testusuwanie.length; i++) {
-        przyciskUsunEl[i].addEventListener('click', function () {
-            testusuwanie[i].remove()            
+    let ElementToDelete = document.getElementsByClassName('new-item')
+    const BttDeleteEl = document.getElementsByClassName('DeleteElement')
+    for (let i = 0; i < ElementToDelete.length; i++) {
+        BttDeleteEl[i].addEventListener('click', function () {
+            document.getElementById(`${i}`).remove()            
             ItemCounter()
-            // console.log(document.getElementById('Todo-list').innerHTML)
         })  
     }
 }
@@ -90,6 +84,7 @@ const ItemDelete = () => {
 const taskDone = () => {
     const taskDoneButton = document.getElementsByClassName('div-checkbox')
     for (let i = 1; i < taskDoneButton.length; i++) {
+        
         taskDoneButton[i].addEventListener('click', function () {
             taskDoneButton[i].classList.toggle("div-checkbox-done")
         })  
@@ -157,7 +152,6 @@ CompletedButton.addEventListener('click', function() {
     ActiveToDoButton.classList.remove('isActive')
     CompletedButton.classList.add('isActive')
     for (let i = 0; i < testusuwanie.length; i++) {
-        console.log(testusuwanie.length)
         if (CheckIf[i].classList.contains('div-checkbox-done') === true) {
             document.getElementsByClassName('new-item')[i].classList.remove('visibility')
         } else {
@@ -168,39 +162,48 @@ CompletedButton.addEventListener('click', function() {
 
 
 // ///////////// Clear completed //////////////////
-const ClearCompletedBtt = document.getElementById('clear-completed-button')
+    const ClearCompletedBtt = document.getElementById('clear-completed-button')
 
-ClearCompletedBtt.addEventListener('click', function() {
-    let testusuwanie = document.getElementsByClassName('new-item')
-    const CheckIf = document.getElementsByClassName('CheckIf')
-    for (let i = 0; i < testusuwanie.length; i++) {
-        console.log(testusuwanie.length)
-        if (CheckIf[i].classList.contains('div-checkbox-done') === true) {
-            document.getElementsByClassName('new-item')[i].remove()
-            ItemCounter()
+    ClearCompletedBtt.addEventListener('click', function() {
+        
+            
+        funk()
+        
+        ElementsDoneToDelete = new Array();
+        ItemCounter();
+        AddIdToNewItems();
+        taskDone()
+    })
+
+    const funk = function() {
+        const CheckIf = document.getElementsByClassName('CheckIf')
+        for (let i = 0; i < document.getElementsByClassName('new-item').length; i++) {
+            if (CheckIf[i].classList.contains('div-checkbox-done') === true) {
+                ElementsDoneToDelete += (i)
+            }
         }
+        console.log(ElementsDoneToDelete)
+        for (let j = 0; j < ElementsDoneToDelete.length; j++) {
+            document.getElementById(`${ElementsDoneToDelete[j]}`).remove()  
+            console.log(ElementsDoneToDelete[j])
+        } 
     }
-})
+
+
+    
+
+/*
+const ItemDelete = () => {
+    let ElementToDelete = document.getElementsByClassName('new-item')
+    const BttDeleteEl = document.getElementsByClassName('DeleteElement')
+    for (let i = 0; i < ElementToDelete.length; i++) {
+        BttDeleteEl[i].addEventListener('click', function () {
+            document.getElementById(`${i}`).remove()            
+            ItemCounter()
+        })  
+    }
+}
+*/
 
 
 
-
-
-// ///////////// przycisk usun element //////////////////
-// document.getElementById('DeleteElement').addEventListener('click', function() {
-//     for (let i = 0; i < 5; i++) {
-//         console.log(`pozycja ${i}`)
-//     }
-// })
-
-// let testArray = new Array();
-// testArray[0] = "element 0"
-// testArray[1] = "element 1"
-// testArray[2] = "element 2"
-// testArray[3] = "element 3"
-
-// testArray.forEach(element => {
-//     console.log(element)
-// });
-
-// testArray.splice(2,1)
