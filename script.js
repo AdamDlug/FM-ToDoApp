@@ -2,19 +2,12 @@ const todoList = document.getElementById('Todo-list').querySelectorAll('.new-ite
 const newItemAccept = document.getElementById('NewItemAccept')
 const przyciskActive = document.getElementById('ActiveTodoItems')
 const themeSwitch = document.getElementById('theme-switch')
-
 const newItemText = document.getElementById('NewItemInput')
 let ElementsDoneToDelete = new Array();
 
-///////////// zlicza elementy które istnieją w liscie
 const ItemCounter = () => {
     document.getElementById('itemsLeft-span').innerHTML = document.querySelectorAll('.new-item').length;
 }
-
-
-
-///////////// dodanie nowego elementu //////////////////
-
 newItemAccept.addEventListener('click', function(){
     document.getElementById('Todo-list').innerHTML += 
     `<div id="" class="new-item">
@@ -31,7 +24,6 @@ newItemAccept.addEventListener('click', function(){
     ItemDelete(); 
     taskDone();
 })
-
 const AddIdToNewItems = () => {
     for ( i = 0; i < document.getElementsByClassName('new-item').length; i++) {
         document.getElementsByClassName('new-item')[i].setAttribute('id', `${i}`)
@@ -42,14 +34,6 @@ const DeleteIdFromNewItems = () => {
         document.getElementsByClassName('new-item')[i].setAttribute('id', "")
     }
 }
-
-
-///////////// przycisk usun element //////////////////
-/*
-   
-*/
-
-
 const ItemDelete = () => {
     let ElementToDelete = document.getElementsByClassName('new-item')
     const BttDeleteEl = document.getElementsByClassName('DeleteElement')
@@ -60,27 +44,6 @@ const ItemDelete = () => {
         })  
     }
 }
-
-
-///////////// drag drop //////////////////
-/*
-    
-*/
-// const DragDrop = () => {
-//     const testDragDrop = document.getElementsByClassName('new-item')
-//     for (let i = 0; i < testDragDrop.length; i++) {
-//         testDragDrop[i].addEventListener('', function () {
-            
-//             testusuwanie[i].parentNode.removeChild(testusuwanie[i])
-//             i--
-//             console.log(document.querySelectorAll('.new-item'))
-//             ItemCounter();
-//         })  
-//     }
-// }
-
-///////////// przycisk potwierdzajacy wykonanie zadania //////////////////
-
 const taskDone = () => {
     const taskDoneButton = document.getElementsByClassName('div-checkbox')
     for (let i = 1; i < taskDoneButton.length; i++) {
@@ -91,8 +54,6 @@ const taskDone = () => {
     }
 }
 
-
-//////////// zmiana motywu ////////////
 let count = 1
 for (let i = -1; i < todoList.length; i++) {
     themeSwitch.addEventListener('click', function(){
@@ -115,11 +76,9 @@ for (let i = -1; i < todoList.length; i++) {
     })
 }
 
-///////////////  all active completed /////////////// 
 const AllButton = document.getElementById('All-button');
 const ActiveToDoButton = document.getElementById('ActiveTodoItems');
 const CompletedButton = document.getElementById('CompletedButton');
-
 
 AllButton.addEventListener('click', function() {
     let testusuwanie = document.getElementsByClassName('new-item')
@@ -160,22 +119,18 @@ CompletedButton.addEventListener('click', function() {
     }
 })
 
-
 // ///////////// Clear completed //////////////////
     const ClearCompletedBtt = document.getElementById('clear-completed-button')
 
-    ClearCompletedBtt.addEventListener('click', function() {
-        
-            
-        funk()
-        
+    ClearCompletedBtt.addEventListener('click', function() { 
+        checkIfCompleted()
         ElementsDoneToDelete = new Array();
         ItemCounter();
         AddIdToNewItems();
         taskDone()
     })
 
-    const funk = function() {
+    const checkIfCompleted = function() {
         const CheckIf = document.getElementsByClassName('CheckIf')
         for (let i = 0; i < document.getElementsByClassName('new-item').length; i++) {
             if (CheckIf[i].classList.contains('div-checkbox-done') === true) {
@@ -188,22 +143,3 @@ CompletedButton.addEventListener('click', function() {
             console.log(ElementsDoneToDelete[j])
         } 
     }
-
-
-    
-
-/*
-const ItemDelete = () => {
-    let ElementToDelete = document.getElementsByClassName('new-item')
-    const BttDeleteEl = document.getElementsByClassName('DeleteElement')
-    for (let i = 0; i < ElementToDelete.length; i++) {
-        BttDeleteEl[i].addEventListener('click', function () {
-            document.getElementById(`${i}`).remove()            
-            ItemCounter()
-        })  
-    }
-}
-*/
-
-
-
